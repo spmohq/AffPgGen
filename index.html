@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>Siva's HTML Genie - For Redirection Page</title> <!-- Changed title -->
+  <link rel="icon" type="image/x-icon" href="spm.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1E1E2F; /* Dark blue-gray background */
+      color: #EAEAEA; /* Light gray text */
+      padding: 2rem;
+      text-align: center; /* Center inline or inline-block children like h1 */
+      margin: 0; /* Ensure no default body margin */
+    }
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+    .whatsapp-btn {
+        text-decoration: none;
+        color: #fff;
+        background-color: #25D366; /* WhatsApp green */
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 15px;
+        cursor: pointer;
+        border: none;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .whatsapp-btn:hover {
+        background-color: #1EBE5D;
+    }
+    .facebook-btn {
+        text-decoration: none;
+        color: #fff;
+        background-color: #4267B2; /* Facebook blue */
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 15px;
+        cursor: pointer;
+        border: none;
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .facebook-btn:hover {
+        background-color: #365899;
+    }
+    .tool-card {
+      background: #3A3D5B; /* Medium dark blue-gray card background */
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      max-width: 500px; /* Limit width on desktop */
+      margin-left: auto;   /* Center block element */
+      margin-right: auto;  /* Center block element */
+      text-align: left;   /* Reset text-align for content inside card */
+    }
+    .tool-card h2 {
+      margin-top: 0; /* Ensure h2 respects card padding */
+      margin-bottom: 0.5rem;
+      color: #FFD700; /* Gold accent color */
+    }
+    .tool-card p {
+      margin-bottom: 1rem;
+    }
+    .tool-button { /* General button style for tools */
+      background: #FFD700; /* Gold accent color */
+      color: #1E1E2F; /* Dark blue-gray text on button */
+      border: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      display: block; 
+      margin: 1rem auto 0; /* Center button within the card */
+      width: fit-content; 
+    }
+    .tool-button:hover {
+      background-color: #E6C200; /* Darker gold on hover */
+    }
+    input[type="text"] {
+      width: calc(100% - 1.5rem); /* Adjust width to account for padding */
+      padding: 0.75rem;
+      margin: 0.5rem 0 1rem 0; /* Added bottom margin */
+      border-radius: 5px;
+      border: 1px solid #3A3D5B; /* Card background color for border */
+      background-color: #1E1E2F; /* Main background color for input */
+      color: #EAEAEA; /* Light text for input */
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+    .result-area {
+      background: #2B2D42; /* Darker blue-gray for result display */
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      white-space: pre-wrap; /* Preserve formatting and wrap text */
+      text-align: left; /* Ensure pre-wrap content is left-aligned */
+      max-height: 300px; /* Max height for scrollability */
+      overflow-y: auto; /* Enable vertical scroll if content overflows */
+      border: 1px solid #3A3D5B; /* Subtle border */
+      font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+      font-size: 0.9em;
+    }
+    #toolModal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%;
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+    }
+    .modal-box {
+      background: #2B2D42; /* Dark blue-gray modal background */
+      margin: 5% auto; /* Centered, with margin from top */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px; /* Max width of modal */
+      max-height: 90vh; /* Max height relative to viewport */
+      overflow-y: auto; /* Scroll for modal content if it overflows */
+      position: relative;
+      text-align: left; /* Ensure modal content is left-aligned */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .modal-box label {
+      display: block;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+      font-weight: 600; /* Slightly bolder labels */
+    }
+    .modal-box button { /* Style for buttons inside modal */
+        background: #FFD700; /* Gold accent */
+        color: #1E1E2F; /* Dark text on button */
+        border: none;
+        padding: 0.75rem 1.25rem;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1rem;
+        margin-right: 0.5rem; /* Spacing for multiple buttons */
+    }
+    .modal-box button:hover {
+        background-color: #E6C200; /* Darker gold on hover */
+    }
+    .modal-close-btn { /* Style for the 'times' close button */
+        position:absolute; 
+        top:10px; 
+        right:15px; 
+        color:white; 
+        font-size: 1.5em; 
+        cursor:pointer;
+        line-height: 1; /* Ensure proper vertical alignment */
+    }
+    /* Footer style */
+    footer {
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid #3A3D5B; /* Separator line */
+    }
+    footer p {
+        font-size: 0.9em;
+        color: #aaa; /* Lighter gray for footer text */
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+    <img src="name.jpg" alt="Profile Image" class="profile-image">
+    <div style="padding-bottom: 10px;"></div>
+    <h1>Siva's HTML Genie - For Redirection Page</h1> <!-- Changed heading -->
+    <p>
+        <button class="whatsapp-btn" onclick="openWhatsApp()">Contact For Support on WhatsApp</button>
+    </p>
+    <button class="facebook-btn" onclick="openFacebookProfile()">Follow Siva on Facebook</button>
+    <div style="padding-bottom: 30px;"></div>
+
+  <!-- HTML Genie - For Redirection Page Tool -->
+  <div id="htmlGenieToolCard" class="tool-card">
+    <h2>HTML Genie - Redirection Page</h2>
+    <p>Generate HTML for a redirection page with a custom meta title and URL. The page includes a timed delay before showing a continue button.</p>
+    <button class="tool-button" onclick="openHtmlGenieModal()">Use It Now</button>
+  </div>
+
+  <!-- Modal placeholder -->
+  <div id="toolModal">
+    <div class="modal-box">
+      <span class="modal-close-btn" onclick="document.getElementById('toolModal').style.display='none'">&times;</span>
+      <h2 id="modalTitle" style="color: #FFD700; margin-top:0;"></h2> <!-- Modal title will be set by JS -->
+      <div id="modalBody">
+        <!-- Modal content will be injected by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Prevent right-click context menu
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Prevent common dev tools and view source shortcuts
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'F12' || 
+          (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) ||
+          (event.ctrlKey && (event.key === 'U' || event.key === 'u' || event.key === 'S' || event.key === 's'))) {
+        event.preventDefault();
+      }
+    });
+
+    // WhatsApp and Facebook functions (from original file)
+    function openWhatsApp() {
+      const phoneNumber = "919883787947"; 
+      const message = encodeURIComponent("Hi! I saw your HTML Genie tool and want to connect."); // Updated message
+      const waUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+      window.location.href = waUrl;
+    }
+  
+    function openFacebookProfile() {
+        // Attempt to open in Facebook app, fallback to web
+        const fbDeepLink = "fb://facewebmodal/f?href=https://www.facebook.com/socjhq/"; // User's FB Page
+        const fbWebLink = "https://www.facebook.com/socjhq/";
+
+        // Try to open the deep link
+        window.location.href = fbDeepLink;
+
+        // Fallback to web link after a short delay if app didn't open
+        // This is a common pattern, but effectiveness can vary by OS/browser
+        setTimeout(function() {
+            // Check if the page is still visible (i.e., app didn't take over)
+            if (!document.hidden) { 
+                 window.location.href = fbWebLink;
+            }
+        }, 2500); // Increased timeout slightly
+    }
+
+    // --- HTML Genie Tool Specific JavaScript ---
+
+    // Predefined HTML template for the redirection page
+    const redirectionPageHtmlTemplate = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{Variable1}}</title> 
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #2374E1;
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 0 20px;
+        }
+        .box {
+            background-color: #2374E1; /* Same as body to blend, or can be different */
+            padding: 20px;
+            border-radius: 10px; /* Only visible if bg is different or has shadow */
+        }
+        .box img {
+            max-width: 50%; /* Responsive image */
+            height: auto;
+        }
+        .btn {
+            background-color: white;
+            color: #2374E1;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            text-decoration: none; /* In case it's an <a> styled as button */
+        }
+        .btn:hover {
+            opacity: 0.9; /* Simple hover effect */
+        }
+        #message {
+            display: none; /* Hidden initially */
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        #disclaimer {
+            display: none; /* Hidden initially */
+            margin-top: 10px;
+            font-size: 10px;
+            color: #e0e0e0; /* Lighter text for disclaimer */
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const message = document.getElementById("message");
+            const button = document.getElementById("continue-btn");
+            const gif = document.querySelector(".box img");
+            const heading = document.getElementById("loading-text");
+            const disclaimer = document.getElementById("disclaimer");
+
+            // Hide elements that should appear after delay
+            message.style.display = "none";
+            button.style.display = "none";
+            disclaimer.style.display = "none";
+
+            // After 5 seconds, show message, button, and disclaimer; hide loading elements
+            setTimeout(function () {
+                if (message) message.style.display = "block";
+                if (button) button.style.display = "inline-block";
+                if (disclaimer) disclaimer.style.display = "block";
+                if (gif) gif.style.display = "none";
+                if (heading) heading.style.display = "none";
+            }, 5000);
+
+            // Button click opens the target URL
+            if (button) {
+                button.addEventListener("click", function () {
+                    window.open('{{Variable2}}', '_self'); // Open in the same tab
+                });
+            }
+        });
+    <\/script>
+</head>
+<body>
+    <div class="container">
+        <h1 id="loading-text">Hold On While Your Page Is Being Generated</h1>
+        <div class="box">
+            <!-- IMPORTANT: The user of the generated code needs to ensure 'ZZ5H.gif' is accessible -->
+            <img src="ZZ5H.gif" alt="Loading animation showing your page is being prepared">
+        </div>
+        <p id="message">You're almost there. Click the button below to continue to the next page.</p>
+        <button class="btn" id="continue-btn">Click here to continue</button>
+        <div style="padding-top: 10px;">&nbsp;</div>
+        <sub id="disclaimer">Disclaimer: This page may contain an affiliate link. If you purchase through it, I may earn a small commission at no extra cost to you.</sub>
+    </div>
+</body>
+</html>`;
+
+    /**
+     * Opens and configures the modal for the HTML Genie tool.
+     * Sets the modal title and populates the body with input fields and a generate button.
+     */
+    function openHtmlGenieModal() {
+      const modal = document.getElementById('toolModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+
+      modalTitle.textContent = 'HTML Genie - Redirection Page Setup';
+      modalBody.innerHTML = `
+        <div>
+          <label for="metaTitleInput">Meta Title of Page:</label>
+          <input type="text" id="metaTitleInput" placeholder="e.g., My Awesome Product Page">
+
+          <label for="urlInput">Target URL (where to redirect):</label>
+          <input type="text" id="urlInput" placeholder="e.g., https://example.com/product">
+
+          <button onclick="generateRedirectionHtml()">Generate HTML</button>
+
+          <div id="generatedHtmlContainer" class="result-area" style="display:none;"></div>
+          <button id="copyHtmlBtn" style="display:none; margin-top: 0.5rem;" onclick="copyGeneratedHtml()">Copy HTML</button>
+        </div>
+      `;
+      modal.style.display = 'block';
+    }
+
+    /**
+     * Generates the redirection HTML code based on user inputs.
+     * Retrieves values for Meta Title and URL, replaces placeholders in the template,
+     * and displays the generated HTML in the modal.
+     */
+    function generateRedirectionHtml() {
+      const metaTitle = document.getElementById('metaTitleInput').value.trim();
+      const targetUrl = document.getElementById('urlInput').value.trim();
+
+      if (!metaTitle || !targetUrl) {
+        alert("Please enter both Meta Title and URL.");
+        return;
+      }
+
+      // Basic URL validation (starts with http or https)
+      if (!targetUrl.toLowerCase().startsWith('http://') && !targetUrl.toLowerCase().startsWith('https://')) {
+        alert("Please enter a valid URL (starting with http:// or https://).");
+        return;
+      }
+      
+      let generatedHtml = redirectionPageHtmlTemplate.replace('{{Variable1}}', metaTitle);
+      generatedHtml = generatedHtml.replace('{{Variable2}}', targetUrl);
+
+      const container = document.getElementById('generatedHtmlContainer');
+      const copyBtn = document.getElementById('copyHtmlBtn');
+      
+      container.textContent = generatedHtml; // Display HTML code as text
+      container.style.display = 'block';
+      copyBtn.style.display = 'inline-block'; // Show copy button
+      copyBtn.textContent = 'Copy HTML'; // Reset button text if previously copied
+    }
+
+    /**
+     * Copies the generated HTML code from the result area to the clipboard.
+     * Provides visual feedback on the copy button.
+     */
+    function copyGeneratedHtml() {
+      const container = document.getElementById('generatedHtmlContainer');
+      const textToCopy = container.textContent; // .textContent gets the raw text (HTML code)
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const copyBtn = document.getElementById('copyHtmlBtn');
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy HTML';
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+          alert('Failed to copy text. Please try again or copy manually.');
+        });
+      } else {
+        // Fallback for older browsers (less reliable for large text)
+        try {
+          const textArea = document.createElement("textarea");
+          textArea.value = textToCopy;
+          textArea.style.position = "fixed"; // Avoid scrolling to bottom
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+
+          const copyBtn = document.getElementById('copyHtmlBtn');
+          copyBtn.textContent = 'Copied! (fallback)';
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy HTML';
+          }, 2000);
+
+        } catch (err) {
+            console.error('Fallback copy failed: ', err);
+            alert('Failed to copy text. Please try again or copy manually.');
+        }
+      }
+    }
+  </script>
+    <footer>
+        <div style="padding-bottom: 40px;"></div>
+        <p>Copyright © <script>document.write(new Date().getFullYear())</script>.&nbsp;Siva Prasad Mukherjee. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
